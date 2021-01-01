@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutDescription="@xml/profile_fragment_scene"
-            tools:context=".ui.profile.ProfileFragment">
+            tools:context="com.sharonovnik.vkclient.ui.profile.ProfileFragment">
 
             <include
                 android:id="@+id/userInfo"

@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:paddingBottom="20dp"
-    tools:parentTag="com.sharonovnik.homework_2.ui.custom.PostLayout" >
+    tools:parentTag="com.sharonovnik.vkclient.ui.custom.PostLayout" >
     
     <ImageView
         android:id="@+id/avatar"

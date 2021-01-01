@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VkFintech</string>
+    <string name="app_name">VkClient</string>
     <string name="today_label">Сегодня</string>
     <string name="yesterday_label">Вчера</string>
     <string name="news">Лента</string>
