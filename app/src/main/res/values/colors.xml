@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#424242</color>
+    <color name="colorPrimaryDark">#424242</color>
+    <color name="colorAccent">#666</color>
+    <color name="dateHeaderColor">#FF9F9E9E</color>
+    <color name="shimmerLayoutColor">#FF9F9E9E</color>
+    <color name="red">#D75A4A</color>
+    <color name="dateHeaderStrokeColor">#E9EDF3</color>
+    <color name="dateHeaderMainColor">#d8d8d8</color>
+    <color name="dateHeaderSecondaryColor">#ebeff2</color>
+</resources>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_profile" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/StandardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/domainName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/profileImage"
+        tools:text="Nikita Sharonov" />
+
+    <TextView
+        android:id="@+id/domainName"
+        style="@style/StandardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/lastSeen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        tools:text="\@nikita.sharonov" />
+
+    <TextView
+        android:id="@+id/lastSeen"
+        style="@style/StandardText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:maxLines="2"
+        android:text="@string/last_seen_prefix"
+        android:textSize="16sp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="@id/profileImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profileImage"
+        app:layout_constraintTop_toBottomOf="@+id/domainName"
+        tools:text="Был в сети в 04:22 и еще вчера был" />
+
+    <ImageView
+        android:id="@+id/cityIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/profileImage"
+        app:layout_constraintStart_toStartOf="@id/profileImage"
+        android:layout_marginTop="20dp"
+        tools:ignore="ContentDescription"
+        android:src="@drawable/ic_city"/>
+
+    <TextView
+        android:id="@+id/cityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/cityIcon"
+        app:layout_constraintTop_toTopOf="@id/cityIcon"
+        app:layout_constraintBottom_toBottomOf="@id/cityIcon"
+        android:layout_marginStart="10dp"
+        style="@style/StandardText"
+        android:textColor="@android:color/darker_gray"
+        tools:text="Какой-то город"/>
+
+    <ImageView
+        android:id="@+id/educationIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cityIcon"
+        app:layout_constraintStart_toStartOf="@id/cityIcon"
+        android:layout_marginTop="10dp"
+        tools:ignore="ContentDescription"
+        android:src="@drawable/ic_education"/>
+
+    <TextView
+        android:id="@+id/universityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/educationIcon"
+        app:layout_constraintTop_toTopOf="@id/educationIcon"
+        app:layout_constraintBottom_toBottomOf="@id/educationIcon"
+        android:layout_marginStart="10dp"
+        style="@style/StandardText"
+        android:textColor="@android:color/darker_gray"
+        tools:text="Какой-то универ"/>
+
+    <ImageView
+        android:id="@+id/followersIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/educationIcon"
+        app:layout_constraintStart_toStartOf="@id/educationIcon"
+        android:layout_marginTop="10dp"
+        tools:ignore="ContentDescription"
+        android:src="@drawable/ic_followers"/>
+
+    <TextView
+        android:id="@+id/followersName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/followersIcon"
+        app:layout_constraintTop_toTopOf="@id/followersIcon"
+        app:layout_constraintBottom_toBottomOf="@id/followersIcon"
+        android:layout_marginStart="10dp"
+        style="@style/StandardText"
+        android:textColor="@android:color/darker_gray"
+        tools:text="190M подписчиков"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/post_divider_drawable"
+        app:layout_constraintTop_toBottomOf="@id/showMore"/>
+
+    <TextView
+        android:id="@+id/showMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/StandardText"
+        android:background="?attr/selectableItemBackground"
+        android:textColor="@color/colorAccent"
+        android:text="@string/show_more"
+        android:padding="5dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/followersIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="10dp"
+        android:drawablePadding="10dp"
+        app:layout_constraintBottom_toTopOf="@id/divider"
+        android:layout_marginTop="10dp"
+        app:drawableStartCompat="@drawable/ic_more" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
