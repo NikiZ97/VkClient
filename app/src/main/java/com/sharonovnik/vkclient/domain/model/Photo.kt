@@ -1,25 +1,27 @@
 package com.sharonovnik.vkclient.domain.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
 import java.io.Serializable
 
+@kotlinx.serialization.Serializable
 data class Photo (
-    @SerializedName("album_id") val albumId : Int,
-    @SerializedName("date") val date : Int,
-    @SerializedName("id") val id : Int,
-    @SerializedName("owner_id") val ownerId : Int,
-    @SerializedName("has_tags") val hasTags : Boolean,
-    @SerializedName("access_key") val accesskey : String,
-    @SerializedName("sizes") val sizes: List<Size>,
-    @SerializedName("post_id") val postId : Int,
-    @SerializedName("text") val text : String,
-    @SerializedName("user_id") val userId : Int,
-    @SerializedName("width") val width : Int
+    @SerialName("album_id") val albumId : Int = -1,
+    @SerialName("date") val date : Int = -1,
+    @SerialName("id") val id : Int = -1,
+    @SerialName("owner_id") val ownerId : Int = -1,
+    @SerialName("has_tags") val hasTags : Boolean = false,
+    @SerialName("access_key") val accesskey : String = "",
+    @SerialName("sizes") val sizes: List<Size> = listOf(),
+    @SerialName("post_id") val postId : Int = -1,
+    @SerialName("text") val text : String = "",
+    @SerialName("user_id") val userId : Int = -1,
+    @SerialName("width") val width : Int = -1
 ): Serializable
 
+@kotlinx.serialization.Serializable
 data class Size(
-    @SerializedName("height") val height: Int,
-    @SerializedName("url") val url: String,
-    @SerializedName("width") val width: Int,
-    @SerializedName("type") val type: String,
+    @SerialName("height") val height: Int = -1,
+    @SerialName("url") val url: String = "",
+    @SerialName("width") val width: Int = -1,
+    @SerialName("type") val type: String = "",
 ): Serializable

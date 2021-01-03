@@ -9,7 +9,10 @@ object DateTimeConverter {
     private val DATE = Date()
     private val CALENDAR = Calendar.getInstance()
 
-    fun getDateFromUnixTime(unixTime: Long): String {
+    fun getDateFromUnixTime(unixTime: Long?): String {
+        if (unixTime == null) {
+            return ""
+        }
         CALENDAR.timeInMillis = System.currentTimeMillis()
         DATE.time = unixTime * 1000
         CALENDAR.set(CALENDAR.get(Calendar.YEAR), CALENDAR.get(Calendar.MONTH), CALENDAR.get(Calendar.DATE), 0, 0, 0)

@@ -1,106 +1,112 @@
 package com.sharonovnik.vkclient.data.network.response
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class UserInfoResponse(
-    @SerializedName("id")
-    val id: Long,
+    @SerialName("id")
+    val id: Long = -1,
 
-    @SerializedName("first_name")
-    val firstName: String,
+    @SerialName("first_name")
+    val firstName: String = "",
 
-    @SerializedName("domain")
-    val domain: String,
+    @SerialName("domain")
+    val domain: String = "",
 
-    @SerializedName("last_name")
-    val lastName: String,
+    @SerialName("last_name")
+    val lastName: String = "",
 
-    @SerializedName("photo_100")
-    val photo: String,
+    @SerialName("photo_100")
+    val photo: String = "",
 
-    @SerializedName("bdate")
-    val birthdate: String?,
+    @SerialName("bdate")
+    val birthdate: String = "",
 
-    @SerializedName("country")
-    val country: Country?,
+    @SerialName("country")
+    val country: Country? = null,
 
-    @SerializedName("city")
-    val city: City?,
+    @SerialName("city")
+    val city: City? = null,
 
-    @SerializedName("about")
-    val about: String,
+    @SerialName("about")
+    val about: String = "",
 
-    @SerializedName("last_seen")
+    @SerialName("last_seen")
     val lastSeen: LastSeen,
 
-    @SerializedName("followers_count")
-    val followersCount: Long,
+    @SerialName("followers_count")
+    val followersCount: Long = -1,
 
-    @SerializedName("career")
-    val career: List<Career>,
+    @SerialName("career")
+    val career: List<Career> = listOf(),
 
-    @SerializedName("university")
-    val universityId: Int,
+    @SerialName("university")
+    val universityId: Int = -1,
 
-    @SerializedName("university_name")
-    val universityName: String,
+    @SerialName("university_name")
+    val universityName: String = "",
 
-    @SerializedName("faculty")
-    val faculty: Int,
+    @SerialName("faculty")
+    val faculty: Int = -1,
 
-    @SerializedName("faculty_name")
-    val facultyName: String,
+    @SerialName("faculty_name")
+    val facultyName: String = "",
 
-    @SerializedName("graduation")
-    val graduationYear: Int,
+    @SerialName("graduation")
+    val graduationYear: Int = -1,
 )
 
+@Serializable
 data class Country(
-    @SerializedName("id")
-    val id: Int,
+    @SerialName("id")
+    val id: Int = -1,
 
-    @SerializedName("title")
-    val title: String,
+    @SerialName("title")
+    val title: String = "",
 )
 
+@Serializable
 data class City(
-    @SerializedName("id")
-    val id: Int,
+    @SerialName("id")
+    val id: Int = -1,
 
-    @SerializedName("title")
-    val title: String,
+    @SerialName("title")
+    val title: String = "",
 )
 
+@Serializable
 data class LastSeen(
-    @SerializedName("platform")
-    val platform: Int,
+    @SerialName("platform")
+    val platform: Int = -1,
 
-    @SerializedName("time")
-    val time: Long,
+    @SerialName("time")
+    val time: Long = -1,
 )
 
+@Serializable
 data class Career(
-    @SerializedName("group_id")
-    val communityId: Int,
+    @SerialName("group_id")
+    val communityId: Int = -1,
 
-    @SerializedName("company")
-    val companyName: String,
+    @SerialName("company")
+    val companyName: String = "",
 
-    @SerializedName("country_id")
-    val countryId: Int,
+    @SerialName("country_id")
+    val countryId: Int = -1,
 
-    @SerializedName("city_id")
-    val cityId: Int,
+    @SerialName("city_id")
+    val cityId: Int = -1,
 
-    @SerializedName("city_name")
-    val cityName: String,
+    @SerialName("city_name")
+    val cityName: String = "",
 
-    @SerializedName("from")
-    val careerBegYear: Int,
+    @SerialName("from")
+    val careerBegYear: Int = -1,
 
-    @SerializedName("until")
-    val careerEndYear: Int,
+    @SerialName("until")
+    val careerEndYear: Int = -1,
 
-    @SerializedName("position")
-    val position: String,
+    @SerialName("position")
+    val position: String = "",
 )

@@ -1,8 +1,10 @@
 package com.sharonovnik.vkclient.data.network.response
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ComposePostResponse(
-    @SerializedName("post_id")
-    val postId: Int
+    @SerialName("post_id")
+    val postId: Int = -1
 )

@@ -34,17 +34,17 @@ class CommentAdapter(
 
         fun bind(comment: Comment) {
             Glide.with(itemView.context)
-                .load(comment.profile.photo50)
+                .load(comment.profile?.photo50)
                 .transform(CircleCrop())
                 .into(itemView.avatarImage)
             with(itemView.ownerName) {
-                text = comment.profile.firstName
+                text = comment.profile?.firstName
                 append(" ")
-                append(comment.profile.lastName)
+                append(comment.profile?.lastName)
             }
-            itemView.commentText.text = comment.comment.text
+            itemView.commentText.text = comment.comment?.text
             itemView.commentTime.text =
-                DateTimeConverter.getDateFromUnixTime(comment.comment.date)
+                DateTimeConverter.getDateFromUnixTime(comment.comment?.date)
         }
     }
 }

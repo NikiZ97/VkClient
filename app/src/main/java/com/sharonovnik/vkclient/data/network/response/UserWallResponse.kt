@@ -1,89 +1,95 @@
 package com.sharonovnik.vkclient.data.network.response
 
-import com.google.gson.annotations.SerializedName
 import com.sharonovnik.vkclient.domain.model.Comments
 import com.sharonovnik.vkclient.domain.model.Likes
 import com.sharonovnik.vkclient.domain.model.Photo
 import com.sharonovnik.vkclient.domain.model.Views
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class UserWallResponse(
-    @SerializedName("count")
-    val count: Int,
+    @SerialName("count")
+    val count: Int = -1,
 
-    @SerializedName("items")
-    val wallItem: List<UserWallItem>,
+    @SerialName("items")
+    val wallItem: List<UserWallItem> = listOf(),
 
-    @SerializedName("profiles")
-    val profiles: List<UserWallProfile>
+    @SerialName("profiles")
+    val profiles: List<UserWallProfile> = listOf()
 )
 
+@Serializable
 data class UserWallItem(
-    @SerializedName("id")
-    val id: Int,
+    @SerialName("id")
+    val id: Int = -1,
 
-    @SerializedName("from_id")
-    val fromId: Long,
+    @SerialName("from_id")
+    val fromId: Long = -1,
 
-    @SerializedName("owner_id")
-    val ownerId: Long,
+    @SerialName("owner_id")
+    val ownerId: Long = -1,
 
-    @SerializedName("date")
-    val date: Long,
+    @SerialName("date")
+    val date: Long = -1,
 
-    @SerializedName("post_type")
-    val postType: String,
+    @SerialName("post_type")
+    val postType: String = "",
 
-    @SerializedName("text")
-    val text: String,
+    @SerialName("text")
+    val text: String = "",
 
-    @SerializedName("can_delete")
-    val canDelete: Int,
+    @SerialName("can_delete")
+    val canDelete: Int = -1,
 
-    @SerializedName("attachments")
-    val attachments: List<UserWallAttachment>?,
+    @SerialName("attachments")
+    val attachments: List<UserWallAttachment>? = null,
 
-    @SerializedName("post_source")
-    val postSource: PostSource,
+    @SerialName("post_source")
+    val postSource: PostSource? = null,
 
-    @SerializedName("comments")
-    val comments: Comments,
+    @SerialName("comments")
+    val comments: Comments? = null,
 
-    @SerializedName("likes")
-    val likes: Likes,
+    @SerialName("likes")
+    val likes: Likes? = null,
 
-    @SerializedName("views")
-    val views: Views,
+    @SerialName("views")
+    val views: Views? = null,
 
-    @SerializedName("is_favorite")
-    val isFavorite: Boolean,
+    @SerialName("is_favorite")
+    val isFavorite: Boolean = false,
 )
 
+@Serializable
 data class UserWallProfile(
-    @SerializedName("first_name")
-    val firstName: String,
+    @SerialName("first_name")
+    val firstName: String = "",
 
-    @SerializedName("last_name")
-    val last_name: String,
+    @SerialName("last_name")
+    val last_name: String = "",
 
-    @SerializedName("id")
-    val id: Long,
+    @SerialName("id")
+    val id: Long = -1,
 
-    @SerializedName("photo_100")
-    val photo: String,
+    @SerialName("photo_100")
+    val photo: String = "",
 )
 
+@Serializable
 data class UserWallAttachment(
-    @SerializedName("type")
-    val type: String,
+    @SerialName("type")
+    val type: String = "",
 
-    @SerializedName("photo")
-    val photo: Photo?,
+    @SerialName("photo")
+    val photo: Photo? = null,
 )
 
+@Serializable
 data class PostSource(
-    @SerializedName("type")
-    val type: String,
+    @SerialName("type")
+    val type: String = "",
 
-    @SerializedName("platform")
-    val platform: String,
+    @SerialName("platform")
+    val platform: String = "",
 )

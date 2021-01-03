@@ -1,8 +1,10 @@
 package com.sharonovnik.vkclient.data.network.response
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class CreateCommentResponse(
-    @SerializedName("comment_id")
-    val commentId: Int
+    @SerialName("comment_id")
+    val commentId: Int = -1
 )
