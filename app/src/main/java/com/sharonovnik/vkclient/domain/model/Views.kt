@@ -1,8 +1,9 @@
 package com.sharonovnik.vkclient.domain.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
 import java.io.Serializable
 
+@kotlinx.serialization.Serializable
 data class Views (
-    @SerializedName("count") val count : Int
+    @SerialName("count") val count : Int = -1
 ) : Serializable

@@ -37,7 +37,7 @@ internal fun PostPreviewState.reduce(action: PostPreviewAction): PostPreviewStat
             isLoading = true
         )
         is PostPreviewAction.CommentCreated -> copy(
-            postComments = postComments?.plus(action.comment)?.sortedByDescending { it.comment.date },
+            postComments = postComments?.plus(action.comment)?.sortedByDescending { it.comment?.date },
             isLoading = false
         )
         is PostPreviewAction.ErrorCreateComment -> copy(

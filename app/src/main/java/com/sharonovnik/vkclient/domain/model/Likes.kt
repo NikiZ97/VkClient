@@ -1,9 +1,10 @@
 package com.sharonovnik.vkclient.domain.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
 import java.io.Serializable
 
+@kotlinx.serialization.Serializable
 data class Likes (
-    @SerializedName("count") var count : Int,
-    @SerializedName("user_likes") var userLikes : Int
+    @SerialName("count") var count : Int = -1,
+    @SerialName("user_likes") var userLikes : Int = -1
 ) : Serializable

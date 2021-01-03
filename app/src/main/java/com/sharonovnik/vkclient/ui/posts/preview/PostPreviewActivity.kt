@@ -115,7 +115,7 @@ class PostPreviewActivity : AppCompatActivity() {
         scrollUp.isVisible = false
         commentAdapter = CommentAdapter(listOf(), object : DiffUtil.ItemCallback<Comment>() {
             override fun areItemsTheSame(oldItem: Comment, newItem: Comment): Boolean {
-                return oldItem.comment.id == newItem.comment.id
+                return oldItem.comment?.id == newItem.comment?.id
             }
 
             override fun areContentsTheSame(oldItem: Comment, newItem: Comment): Boolean {
