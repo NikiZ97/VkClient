@@ -5,11 +5,11 @@ import android.content.SharedPreferences
 import com.sharonovnik.vkclient.data.network.TokenInterceptor
 import com.sharonovnik.vkclient.ui.VKLoginActivity
 import com.sharonovnik.vkclient.ui.di.modules.AppModule
+import com.sharonovnik.vkclient.ui.di.scopes.AppScope
 import dagger.Component
-import javax.inject.Singleton
 
 @Component(modules = [AppModule::class])
-@Singleton
+@AppScope
 interface AppComponent {
     fun inject(loginActivity: VKLoginActivity)
     fun sharedPrefs(): SharedPreferences

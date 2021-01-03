@@ -1,11 +1,11 @@
 package com.sharonovnik.vkclient.data.network
 
+import com.sharonovnik.vkclient.ui.di.scopes.AppScope
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+@AppScope
 class TokenInterceptor @Inject constructor(): Interceptor {
     var token: String = ""
 

@@ -51,8 +51,8 @@ class PostPreviewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_post_preview)
         permissionResolver = PermissionResolver(this)
         app = (applicationContext as NewsFeedApplication)
-        app.addPostPreviewComponent()
-        app.postPreviewComponent?.inject(this)
+        app.addActivityComponent()
+        app.activityComponent?.inject(this)
         postId = intent.getIntExtra(EXTRA_POST_PREVIEW_ID_KEY, 0)
         ownerId = intent.getLongExtra(EXTRA_OWNER_ID_KEY, 0)
         viewModel = ViewModelProvider(this, viewModelFactory)[PostPreviewViewModel::class.java]
@@ -194,6 +194,6 @@ class PostPreviewActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        app.clearPostPreviewComponent()
+        app.clearActivityComponent()
     }
 }

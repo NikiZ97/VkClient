@@ -3,7 +3,7 @@ package com.sharonovnik.vkclient.ui.di.components
 import com.sharonovnik.vkclient.ui.di.modules.PostPreviewViewModelModule
 import com.sharonovnik.vkclient.ui.di.modules.RepositoryModule
 import com.sharonovnik.vkclient.ui.di.modules.ViewModelFactoryModule
-import com.sharonovnik.vkclient.ui.di.scopes.PostPreviewScope
+import com.sharonovnik.vkclient.ui.di.scopes.ActivityScope
 import com.sharonovnik.vkclient.ui.posts.preview.PostPreviewActivity
 import dagger.Component
 
@@ -13,7 +13,7 @@ import dagger.Component
         PostPreviewViewModelModule::class,
         ViewModelFactoryModule::class]
 )
-@PostPreviewScope
-interface PostPreviewComponent {
+@ActivityScope
+interface ActivityComponent {
     fun inject(postPreviewActivity: PostPreviewActivity)
 }

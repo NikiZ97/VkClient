@@ -7,7 +7,7 @@ import com.sharonovnik.vkclient.ui.di.modules.AppModule
 class NewsFeedApplication: Application() {
     lateinit var appComponent: AppComponent
     var authComponent: AuthComponent? = null
-    var postPreviewComponent: PostPreviewComponent? = null
+    var activityComponent: ActivityComponent? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -24,14 +24,14 @@ class NewsFeedApplication: Application() {
         authComponent = null
     }
 
-    fun addPostPreviewComponent() {
-        postPreviewComponent = DaggerPostPreviewComponent.builder()
+    fun addActivityComponent() {
+        activityComponent = DaggerActivityComponent.builder()
             .authComponent(authComponent)
             .build()
     }
 
-    fun clearPostPreviewComponent() {
-        postPreviewComponent = null
+    fun clearActivityComponent() {
+        activityComponent = null
     }
 
     private fun buildAppComponent(): AppComponent {

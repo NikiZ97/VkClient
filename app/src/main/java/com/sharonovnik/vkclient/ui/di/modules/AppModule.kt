@@ -2,18 +2,18 @@ package com.sharonovnik.vkclient.ui.di.modules
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.sharonovnik.vkclient.ui.di.scopes.AppScope
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
 @Module
 class AppModule(private val context: Context) {
     @Provides
-    @Singleton
+    @AppScope
     fun provideContext() = context
 
     @Provides
-    @Singleton
+    @AppScope
     fun providePreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
     }
