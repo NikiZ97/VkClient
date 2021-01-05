@@ -1,9 +1,8 @@
 package com.sharonovnik.vkclient.ui.base
 
-import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 
-open class BaseViewModel: ViewModel() {
+abstract class BaseViewModel: SavedStateViewModel() {
     internal val disposables = CompositeDisposable()
 
     override fun onCleared() {

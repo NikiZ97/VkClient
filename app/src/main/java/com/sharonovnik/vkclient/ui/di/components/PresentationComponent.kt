@@ -1,5 +1,6 @@
 package com.sharonovnik.vkclient.ui.di.components
 
+import com.sharonovnik.vkclient.ui.di.modules.PresentationModule
 import com.sharonovnik.vkclient.ui.di.modules.ViewModelFactoryModule
 import com.sharonovnik.vkclient.ui.di.modules.ViewModelModule
 import com.sharonovnik.vkclient.ui.di.scopes.PresentationScope
@@ -10,7 +11,8 @@ import com.sharonovnik.vkclient.ui.posts.preview.PostPreviewActivity
 import com.sharonovnik.vkclient.ui.profile.ProfileFragment
 import dagger.Subcomponent
 
-@Subcomponent(modules = [ViewModelFactoryModule::class, ViewModelModule::class])
+@Subcomponent(modules = [ViewModelFactoryModule::class,
+    ViewModelModule::class, PresentationModule::class])
 @PresentationScope
 interface PresentationComponent {
     fun inject(mainActivity: MainActivity)

@@ -1,6 +1,7 @@
 package com.sharonovnik.vkclient.ui.profile
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.freeletics.rxredux.StateAccessor
 import com.freeletics.rxredux.reduxStore
 import com.jakewharton.rxrelay2.PublishRelay
@@ -154,4 +155,6 @@ class ProfileViewModel @Inject constructor(
         }
         return items
     }
+
+    override fun init(savedStateHandle: SavedStateHandle) {}
 }

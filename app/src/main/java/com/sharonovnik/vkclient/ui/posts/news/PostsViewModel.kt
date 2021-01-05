@@ -1,6 +1,7 @@
 package com.sharonovnik.vkclient.ui.posts.news
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.freeletics.rxredux.StateAccessor
 import com.freeletics.rxredux.reduxStore
 import com.jakewharton.rxrelay2.PublishRelay
@@ -75,4 +76,6 @@ class PostsViewModel @Inject constructor(
                 }
             }
     }
+
+    override fun init(savedStateHandle: SavedStateHandle) {}
 }

@@ -1,6 +1,7 @@
 package com.sharonovnik.vkclient.ui.posts.preview
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.freeletics.rxredux.StateAccessor
 import com.freeletics.rxredux.reduxStore
 import com.jakewharton.rxrelay2.PublishRelay
@@ -35,7 +36,7 @@ class PostPreviewViewModel @Inject constructor(
                 .subscribe({
                     mutableState.value = it
                 }, {}
-        ))
+                ))
     }
 
     fun getState() = mutableState
@@ -81,4 +82,6 @@ class PostPreviewViewModel @Inject constructor(
     fun createComment(postId: Int, ownerId: Long, message: String) {
         postInput.accept(PostPreviewAction.CreateComment(ownerId, postId, message))
     }
+
+    override fun init(savedStateHandle: SavedStateHandle) {}
 }
