@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +21,7 @@ import com.sharonovnik.vkclient.ui.HeaderSimpleDividerDecoration
 import com.sharonovnik.vkclient.ui.PermissionResolver
 import com.sharonovnik.vkclient.ui.PostsDateDecorator
 import com.sharonovnik.vkclient.ui.SwipeTouchCallback
+import com.sharonovnik.vkclient.ui.base.BaseFragment
 import com.sharonovnik.vkclient.ui.dialog.PostsErrorDialogFragment
 import com.sharonovnik.vkclient.ui.posts.PostAdapter
 import com.sharonovnik.vkclient.ui.posts.PostRow
@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.fragment_posts.*
 import retrofit2.HttpException
 import javax.inject.Inject
 
-class PostsFragment : Fragment() {
+class PostsFragment : BaseFragment() {
     private lateinit var adapter: PostAdapter
     private var onPostLikeStateChangedListener: OnPostLikeStateChangedListener? = null
     private var onDataRefreshedListener: OnDataRefreshedListener? = null
@@ -53,7 +53,7 @@ class PostsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (activity?.applicationContext as NewsFeedApplication).authComponent?.inject(this)
+        injector?.inject(this)
         if (context is OnPostLikeStateChangedListener) {
             onPostLikeStateChangedListener = context
         }

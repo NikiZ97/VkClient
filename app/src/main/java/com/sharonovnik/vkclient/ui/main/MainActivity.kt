@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.Menu
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -18,6 +17,7 @@ import com.sharonovnik.vkclient.R
 import com.sharonovnik.vkclient.doIfVisible
 import com.sharonovnik.vkclient.domain.repository.PostsRepository
 import com.sharonovnik.vkclient.ui.ScrollToTopListener
+import com.sharonovnik.vkclient.ui.base.BaseActivity
 import com.sharonovnik.vkclient.ui.posts.PostRow
 import com.sharonovnik.vkclient.ui.posts.PostsAction
 import com.sharonovnik.vkclient.ui.posts.favorite.FavoritesFragment
@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), PostsFragment.OnPostLikeStateChangedListener, PostsFragment.OnDataRefreshedListener {
+class MainActivity : BaseActivity(), PostsFragment.OnPostLikeStateChangedListener, PostsFragment.OnDataRefreshedListener {
     private var postsFragment = PostsFragment.newInstance()
     private var favoritesFragment = FavoritesFragment.newInstance()
     private var profileFragment = ProfileFragment.newInstance()
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity(), PostsFragment.OnPostLikeStateChangedLi
         super.onCreate(savedInstanceState)
         app = application as NewsFeedApplication
         app.addAuthComponent()
-        app.authComponent?.inject(this)
+        injector?.inject(this)
         setContentView(R.layout.activity_main)
         setToolbar(currentFragment)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]

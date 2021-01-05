@@ -1,10 +1,10 @@
 package com.sharonovnik.vkclient.ui.di.components
 
-import android.content.Context
-import android.content.SharedPreferences
-import com.sharonovnik.vkclient.data.network.TokenInterceptor
 import com.sharonovnik.vkclient.ui.VKLoginActivity
 import com.sharonovnik.vkclient.ui.di.modules.AppModule
+import com.sharonovnik.vkclient.ui.di.modules.DatabaseModule
+import com.sharonovnik.vkclient.ui.di.modules.MapperModule
+import com.sharonovnik.vkclient.ui.di.modules.NetworkModule
 import com.sharonovnik.vkclient.ui.di.scopes.AppScope
 import dagger.Component
 
@@ -12,7 +12,7 @@ import dagger.Component
 @AppScope
 interface AppComponent {
     fun inject(loginActivity: VKLoginActivity)
-    fun sharedPrefs(): SharedPreferences
-    fun context(): Context
-    fun tokenInterceptor(): TokenInterceptor
+    fun plus(databaseModule: DatabaseModule,
+        networkModule: NetworkModule,
+        mapperModule: MapperModule): AuthComponent
 }

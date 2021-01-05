@@ -11,20 +11,23 @@ import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.sharonovnik.vkclient.*
+import com.sharonovnik.vkclient.R
 import com.sharonovnik.vkclient.data.local.entity.ProfileEntity
 import com.sharonovnik.vkclient.data.local.storage.ImagesManager
+import com.sharonovnik.vkclient.openActivity
+import com.sharonovnik.vkclient.showOptionsPopupWindow
+import com.sharonovnik.vkclient.showSnackbar
 import com.sharonovnik.vkclient.ui.DateTimeConverter
 import com.sharonovnik.vkclient.ui.HeaderSimpleDividerDecoration
 import com.sharonovnik.vkclient.ui.PermissionResolver
 import com.sharonovnik.vkclient.ui.SwipeTouchCallback
+import com.sharonovnik.vkclient.ui.base.BaseFragment
 import com.sharonovnik.vkclient.ui.posts.PostAdapter
 import com.sharonovnik.vkclient.ui.posts.PostRow
 import com.sharonovnik.vkclient.ui.posts.preview.PostPreviewActivity
@@ -35,7 +38,7 @@ import kotlinx.android.synthetic.main.user_info_layout.*
 import javax.inject.Inject
 
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var profileViewModel: ProfileViewModel
@@ -51,7 +54,7 @@ class ProfileFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (activity?.applicationContext as NewsFeedApplication).authComponent?.inject(this)
+        injector?.inject(this)
     }
 
     override fun onCreateView(

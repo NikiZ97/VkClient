@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +15,7 @@ import com.sharonovnik.vkclient.*
 import com.sharonovnik.vkclient.data.local.storage.ImagesManager
 import com.sharonovnik.vkclient.data.network.response.Comment
 import com.sharonovnik.vkclient.ui.PermissionResolver
+import com.sharonovnik.vkclient.ui.base.BaseActivity
 import com.sharonovnik.vkclient.ui.custom.PostLayout
 import com.sharonovnik.vkclient.ui.posts.ImageFullscreenActivity
 import com.sharonovnik.vkclient.ui.posts.preview.comments.CommentAdapter
@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.view_post.*
 import kotlinx.android.synthetic.main.view_post.view.*
 import javax.inject.Inject
 
-class PostPreviewActivity : AppCompatActivity() {
+class PostPreviewActivity : BaseActivity() {
     private var postId: Int = 0
     private var ownerId: Long = 0
     private lateinit var viewModel: PostPreviewViewModel
@@ -49,10 +49,9 @@ class PostPreviewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_preview)
+        injector?.inject(this)
         permissionResolver = PermissionResolver(this)
         app = (applicationContext as NewsFeedApplication)
-        app.addActivityComponent()
-        app.activityComponent?.inject(this)
         postId = intent.getIntExtra(EXTRA_POST_PREVIEW_ID_KEY, 0)
         ownerId = intent.getLongExtra(EXTRA_OWNER_ID_KEY, 0)
         viewModel = ViewModelProvider(this, viewModelFactory)[PostPreviewViewModel::class.java]
@@ -190,10 +189,5 @@ class PostPreviewActivity : AppCompatActivity() {
         } else if (state.error != null) {
             showShortToast(getString(R.string.error_loading_comments))
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        app.clearActivityComponent()
     }
 }

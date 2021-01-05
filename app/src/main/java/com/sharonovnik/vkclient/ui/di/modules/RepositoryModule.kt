@@ -6,7 +6,6 @@ import com.sharonovnik.vkclient.data.repository.ProfileRepositoryImpl
 import com.sharonovnik.vkclient.domain.repository.PostPreviewRepository
 import com.sharonovnik.vkclient.domain.repository.PostsRepository
 import com.sharonovnik.vkclient.domain.repository.ProfileRepository
-import com.sharonovnik.vkclient.ui.di.scopes.ActivityScope
 import com.sharonovnik.vkclient.ui.di.scopes.AuthScope
 import dagger.Binds
 import dagger.Module
@@ -18,7 +17,7 @@ abstract class RepositoryModule {
     abstract fun providePostsRepository(postsRepository: PostsRepositoryImpl): PostsRepository
 
     @Binds
-    @ActivityScope
+    @AuthScope
     abstract fun providePostsPreviewRepository(postPreviewRepository: PostPreviewRepositoryImpl)
             : PostPreviewRepository
 

@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sharonovnik.vkclient.*
 import com.sharonovnik.vkclient.data.local.storage.ImagesManager
@@ -17,6 +16,7 @@ import com.sharonovnik.vkclient.ui.EqualSpaceItemDecoration
 import com.sharonovnik.vkclient.ui.HeaderSimpleDividerDecoration
 import com.sharonovnik.vkclient.ui.PermissionResolver
 import com.sharonovnik.vkclient.ui.ScrollToTopListener
+import com.sharonovnik.vkclient.ui.base.BaseFragment
 import com.sharonovnik.vkclient.ui.main.MainActivity
 import com.sharonovnik.vkclient.ui.posts.PostAdapter
 import com.sharonovnik.vkclient.ui.posts.PostRow
@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.fragment_posts.posts
 import javax.inject.Inject
 
 
-class FavoritesFragment : Fragment(), MainActivity.OnFavoritePostAddedListener {
+class FavoritesFragment : BaseFragment(), MainActivity.OnFavoritePostAddedListener {
     private var adapter: PostAdapter? = null
     @Inject
     lateinit var imagesManager: ImagesManager
@@ -41,7 +41,7 @@ class FavoritesFragment : Fragment(), MainActivity.OnFavoritePostAddedListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (activity?.applicationContext as NewsFeedApplication).authComponent?.inject(this)
+        injector?.inject(this)
         (context as MainActivity).scrollToTopListener = object : ScrollToTopListener {
             override fun onScrollToTopClicked() {
                 posts.smoothScrollToPosition(0)
