@@ -17,9 +17,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Provider
 
 class ProfileViewModel @Inject constructor(
-    private val profileRepository: ProfileRepository
+    private val profileRepositoryProvider: Provider<ProfileRepository>
 ) : BaseViewModel() {
     private val mutableState = MutableLiveData<ProfileState>()
     private val _input: Relay<ProfileAction> = PublishRelay.create()
@@ -52,7 +53,7 @@ class ProfileViewModel @Inject constructor(
     ): Observable<ProfileAction> {
         return actions.ofType(ProfileAction.LoadUserInfo::class.java)
             .switchMap {
-                profileRepository.getCurrentUser()
+                profileRepositoryProvider.get().getCurrentUser()
             }
     }
 
@@ -61,7 +62,7 @@ class ProfileViewModel @Inject constructor(
     ): Observable<ProfileAction> {
         return actions.ofType(ProfileAction.LoadUserWall::class.java)
             .switchMap {
-                profileRepository.getUserWall()
+                profileRepositoryProvider.get().getUserWall()
             }
     }
 
@@ -70,7 +71,7 @@ class ProfileViewModel @Inject constructor(
     ): Observable<ProfileAction> {
         return actions.ofType(ProfileAction.ComposePost::class.java)
             .switchMap {
-                profileRepository.composePost(createPostEntity(it.text))
+                profileRepositoryProvider.get().composePost(createPostEntity(it.text))
             }
             .onErrorReturn { ProfileAction.ErrorComposePost(it) }
     }

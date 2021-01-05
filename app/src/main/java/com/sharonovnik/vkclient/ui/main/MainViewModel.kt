@@ -14,8 +14,11 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import javax.inject.Inject
+import javax.inject.Provider
 
-class MainViewModel @Inject constructor(private val postsRepository: PostsRepository): BaseViewModel() {
+class MainViewModel @Inject constructor(
+    private val postsRepositoryProvider: Provider<PostsRepository>
+): BaseViewModel() {
     private val mutableState = MutableLiveData<PostsState>()
     private val _mainInput: Relay<PostsAction> = PublishRelay.create()
     val mainInput: Consumer<PostsAction> = _mainInput
@@ -43,7 +46,7 @@ class MainViewModel @Inject constructor(private val postsRepository: PostsReposi
     ): Observable<PostsAction> {
         return actions.ofType(PostsAction.LoadLocalPosts::class.java)
             .switchMap {
-                postsRepository.getLocalPosts()
+                postsRepositoryProvider.get().getLocalPosts()
                     .onErrorReturn {
                     return@onErrorReturn PostsAction.ErrorLoadPosts(it)
                 }

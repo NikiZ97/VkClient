@@ -14,8 +14,11 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import javax.inject.Inject
+import javax.inject.Provider
 
-class PostsViewModel @Inject constructor(private val postsRepository: PostsRepository) : BaseViewModel() {
+class PostsViewModel @Inject constructor(
+    private val postsRepositoryProvider: Provider<PostsRepository>
+) : BaseViewModel() {
     private val mutableState = MutableLiveData<PostsState>()
     private val _input: Relay<PostsAction> = PublishRelay.create()
     val input: Consumer<PostsAction> = _input
@@ -48,7 +51,7 @@ class PostsViewModel @Inject constructor(private val postsRepository: PostsRepos
     ): Observable<PostsAction> {
         return actions.ofType(PostsAction.LoadPosts::class.java)
             .switchMap {
-                postsRepository.getPosts()
+                postsRepositoryProvider.get().getPosts()
             }
     }
 
@@ -57,7 +60,7 @@ class PostsViewModel @Inject constructor(private val postsRepository: PostsRepos
     ): Observable<PostsAction> {
         return actions.ofType(PostsAction.LikePost::class.java)
             .switchMap {
-                postsRepository.changePostLikeStatus(it.methodName, it.post)
+                postsRepositoryProvider.get().changePostLikeStatus(it.methodName, it.post)
             }
             .onErrorReturn { PostsAction.ErrorLikePost(it) }
     }
@@ -67,7 +70,7 @@ class PostsViewModel @Inject constructor(private val postsRepository: PostsRepos
     ): Observable<PostsAction> {
         return actions.ofType(PostsAction.LoadPostsWithPullToRefresh::class.java)
             .switchMap {
-                postsRepository.getPosts().onErrorReturn {
+                postsRepositoryProvider.get().getPosts().onErrorReturn {
                     return@onErrorReturn PostsAction.ErrorLoadPosts(it)
                 }
             }
