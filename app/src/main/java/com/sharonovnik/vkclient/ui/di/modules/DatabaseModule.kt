@@ -10,7 +10,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class DatabaseModule {
+object DatabaseModule {
 
     @Provides
     @AuthScope

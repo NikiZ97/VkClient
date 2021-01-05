@@ -10,8 +10,7 @@ import com.sharonovnik.vkclient.ui.profile.ProfileFragment
 import dagger.Subcomponent
 
 @Subcomponent(
-    modules = [PresentationModule::class,
-        PostPreviewViewModelModule::class,
+    modules = [PostPreviewViewModelModule::class,
         ViewModelFactoryModule::class,
         PostsViewModelModule::class,
         MainViewModelModule::class,

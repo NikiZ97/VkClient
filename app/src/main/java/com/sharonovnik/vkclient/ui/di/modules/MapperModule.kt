@@ -9,7 +9,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class MapperModule {
+object MapperModule {
     @Provides
     @AuthScope
     fun providePostsMapper(): PostsDtoToEntityMapper {

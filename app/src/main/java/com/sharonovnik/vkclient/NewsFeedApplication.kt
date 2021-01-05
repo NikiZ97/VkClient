@@ -19,7 +19,7 @@ class NewsFeedApplication: Application() {
     }
 
     fun addAuthComponent() {
-        authComponent = appComponent.plus(DatabaseModule(), NetworkModule(), MapperModule())
+        authComponent = appComponent.plus(DatabaseModule, NetworkModule, MapperModule)
     }
 
     fun clearAuthComponent() {

@@ -12,9 +12,12 @@ class AppModule(private val context: Context) {
     @AppScope
     fun provideContext() = context
 
-    @Provides
-    @AppScope
-    fun providePreferences(context: Context): SharedPreferences {
-        return context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    companion object {
+
+        @Provides
+        @AppScope
+        fun providePreferences(context: Context): SharedPreferences {
+            return context.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        }
     }
 }
