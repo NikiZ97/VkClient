@@ -15,5 +15,5 @@ import dagger.Subcomponent
 )
 @AuthScope
 interface AuthComponent {
-    fun plus(): ActivityComponent
+    fun builder(): ActivityComponent.Builder
 }

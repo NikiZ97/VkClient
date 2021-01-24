@@ -41,7 +41,8 @@ class PostsFragment : BaseFragment() {
     private lateinit var postsViewModel: PostsViewModel
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var permissionResolver: PermissionResolver
+    @Inject
+    lateinit var permissionResolver: PermissionResolver
 
     companion object {
         private const val ADD_LIKE_NAME = "add"
@@ -63,7 +64,6 @@ class PostsFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        permissionResolver = PermissionResolver(this)
         return inflater.inflate(R.layout.fragment_posts, container, false)
     }
 

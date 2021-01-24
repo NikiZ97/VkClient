@@ -39,7 +39,8 @@ class PostPreviewActivity : BaseActivity() {
     private lateinit var app: NewsFeedApplication
     private lateinit var postLayout: PostLayout
     private lateinit var commentAdapter: CommentAdapter
-    private lateinit var permissionResolver: PermissionResolver
+    @Inject
+    lateinit var permissionResolver: PermissionResolver
 
     companion object {
         const val EXTRA_POST_PREVIEW_ID_KEY = "post_preview_id_key"
@@ -50,7 +51,6 @@ class PostPreviewActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_preview)
         injector?.inject(this)
-        permissionResolver = PermissionResolver(this)
         app = (applicationContext as NewsFeedApplication)
         postId = intent.getIntExtra(EXTRA_POST_PREVIEW_ID_KEY, 0)
         ownerId = intent.getLongExtra(EXTRA_OWNER_ID_KEY, 0)

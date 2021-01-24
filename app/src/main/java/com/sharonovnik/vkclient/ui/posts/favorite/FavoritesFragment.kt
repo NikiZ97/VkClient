@@ -31,7 +31,8 @@ class FavoritesFragment : BaseFragment(), MainActivity.OnFavoritePostAddedListen
     private var adapter: PostAdapter? = null
     @Inject
     lateinit var imagesManager: ImagesManager
-    private lateinit var permissionResolver: PermissionResolver
+    @Inject
+    lateinit var permissionResolver: PermissionResolver
 
     companion object {
 
@@ -52,7 +53,6 @@ class FavoritesFragment : BaseFragment(), MainActivity.OnFavoritePostAddedListen
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        permissionResolver = PermissionResolver(this)
         return inflater.inflate(R.layout.fragment_favorite, container, false)
     }
 

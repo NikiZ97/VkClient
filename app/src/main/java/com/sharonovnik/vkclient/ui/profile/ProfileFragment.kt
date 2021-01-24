@@ -45,7 +45,8 @@ class ProfileFragment : BaseFragment() {
     private lateinit var adapter: PostAdapter
     @Inject
     lateinit var imagesManager: ImagesManager
-    private lateinit var permissionResolver: PermissionResolver
+    @Inject
+    lateinit var permissionResolver: PermissionResolver
 
     companion object {
         @JvmStatic
@@ -60,7 +61,6 @@ class ProfileFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        permissionResolver = PermissionResolver(this)
         childFragmentManager.setFragmentResultListener(
             ComposePostDialogFragment.KEY_POST_RESULT, viewLifecycleOwner
         ) { _, bundle ->
